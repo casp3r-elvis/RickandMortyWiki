@@ -15,7 +15,7 @@ function App() {
   let {info, results} = fetchedData;
   
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
   useEffect(()=>{
 
