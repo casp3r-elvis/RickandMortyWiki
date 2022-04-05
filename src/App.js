@@ -6,11 +6,40 @@ import Cards from "./components/Cards/cards";
 import Filters from "./components/Filters/filters";
 import Pagination from './components/Pagination/pagination';
 import Search from './components/Search/search';
+import Nvbar from './components/Navbar/Navbar';
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Episode from './components/Pages/Episode';
+import Location from './components/Pages/Location';
+import CardDetails from './components/Cards/CardDetails';
 
 
-function App() {
+function App(){
+  return(
+    
+    <Router>
+      <div className="App">
+            <Nvbar/>
+      </div>
+      <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/:id" element={<CardDetails/>}/>
+
+      <Route path="/episodes" element={<Episode/>}/>
+       <Route path="/episodes/:id" element={<CardDetails/>}/>
+
+      <Route path="/location" element={<Location/>}/>
+       <Route path="/location/:id" element={<CardDetails/>}/>
+      </Routes>
+    </Router>
+  )
+}
+
+const Home =()=> {
   let [pageNumber, setPageNumber] = useState(1);
   let [search, setSearch] = useState("");
+  let [status, setStatus] = useState("");
+  let [gender, setGender] = useState("");
+  let [species, setSpecies] = useState("")
   let [fetchedData, updateFetchedDate] = useState([]);
   let {info, results} = fetchedData;
   
@@ -27,17 +56,19 @@ function App() {
   },[api])
 
     return ( 
+    
         <div className = "App" >
-       <h1 className="text-center ubuntu my-4">Rick & Morty <span className="text-primary">Wiki</span> </h1>
+        <h1 className="text-center mb-4">Characters</h1>
+    
         <Search setPageNumber={setPageNumber} setSearch={setSearch}/>
        <div className="contanier">
          <div className="row">
            
-           <Filters />
+           <Filters setSpecies={setSpecies} setGender={setGender} setStatus={setStatus} setPageNumber={setPageNumber} />
          
-              <div className="col-8">
+              <div className="col-lg-8 col-12">
               <div className="row">
-               <Cards results={results}/>
+               <Cards page="/" results={results}/>
               </div>
               </div>
          </div>

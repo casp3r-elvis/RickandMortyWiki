@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 import Cards from '../Cards/cards';
 import InputGroup from '/Users/esikeelvis/WebstormProjects/reactwiki/src/components/InputGroup.js'
 
-const Location = () => {
+const Episode = () => {
 
   let [id, setID] = useState(1);
   let [info, setInfo] = useState([])
   let [results, setResult] = useState([])
-  let {name, type, dimension} = info
-  let api = `https://rickandmortyapi.com/api/location/${id}`
+  let {air_date, name} = info
+  let api = `https://rickandmortyapi.com/api/episode/${id}`
 
   useEffect (()=>{
 
@@ -18,7 +18,7 @@ const Location = () => {
      setInfo(data);
 
      let ch = await Promise.all(
-       data.residents.map((x)=>{
+       data.characters.map((x)=>{
          return fetch(x).then(res => res.json());
        })
      )
@@ -32,25 +32,17 @@ return(
   
   <div className="row mb-4 ">
     <h1 className="text-center mb-4">
-      Location: 
+      Episode: 
       <span className="text-primary">{name ==="" ? "unknown": name}</span>
     </h1>
     <h5 className="text-center">
-     Dimension: {dimension ==="" ? "unknown": dimension}
+      Air_date{air_date ==="" ? "unknown": air_date}
     </h5>
-       <h1 className="text-center mb-4">
-      Type: 
-      <span className="text-primary">{name ==="" ? "unknown": name}</span>
-    </h1>
-    <h5 className="text-center">
-      Type : {type ==="" ? "unknown": type}
-    </h5>
-     
   </div>
   <div className="row">
      <div className="col-lg-3 ps-5 col-12">
-       <h4 className="text-center mb-4">Pick Location</h4>
-       <InputGroup setID={setID} name="Location" total={121}/>
+       <h4 className="text-center mb-4">Pick Episodes</h4>
+       <InputGroup setID={setID} name="Episode" total={51}/>
        </div>
      <div className="col-lg-8 col-12">
      <div className="row"> 
@@ -63,4 +55,4 @@ return(
 )
 };
 
-export default Location
+export default Episode
