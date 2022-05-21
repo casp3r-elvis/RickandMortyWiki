@@ -4,12 +4,15 @@ import Gendeer from './Category/Gendeer'
 import Species from './Category/Species'
 import Status from './Category/Status'
 
-const filters = ({setStatus, setPageNumber, setGender, setSpecies}) => {
+const filters = ({updatePageNumber,
+  updateStatus,
+  updateGender,
+  updateSpecies,}) => {
   let clear = ()=>{
-    setStatus("");
-     setPageNumber("");
-      setGender("");
-       setSpecies("")
+    updateStatus("");
+     updatePageNumber(1);
+      updateGender("");
+       updateSpecies("")
        window.location.reload(false)
   }
   return (
@@ -27,11 +30,18 @@ const filters = ({setStatus, setPageNumber, setGender, setSpecies}) => {
   
  
   
-</div>
-<Status setStatus={setStatus} setPageNumber={setPageNumber}/>  
-  <Species setSpecies={setSpecies} setPageNumber={setPageNumber} />
-  <Gendeer setGender={setGender} setPageNumber={setPageNumber}/>
-    </div>
+</div>       <Status
+          updatePageNumber={updatePageNumber}
+          updateStatus={updateStatus}
+        />
+        <Species
+          updatePageNumber={updatePageNumber}
+          updateSpecies={updateSpecies}
+        />
+        <Gendeer
+          updatePageNumber={updatePageNumber}
+          updateGender={updateGender}
+        /></div>
     
   )
   

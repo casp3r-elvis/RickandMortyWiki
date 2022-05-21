@@ -36,7 +36,7 @@ return(
       <span className="text-primary">{name ==="" ? "unknown": name}</span>
     </h1>
     <h5 className="text-center">
-      Air_date{air_date ==="" ? "unknown": air_date}
+      Air_date: {air_date ==="" ? "unknown": air_date}
     </h5>
   </div>
   <div className="row">

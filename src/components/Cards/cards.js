@@ -3,7 +3,7 @@ import styles from './Cards.module.css';
 import {Link} from 'react-router-dom'
 
 const cards = ({results, page}) => {
- 
+            
     let display;
    if(results){
        display = results.map((x) =>{

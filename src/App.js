@@ -12,7 +12,6 @@ import Episode from './components/Pages/Episode';
 import Location from './components/Pages/Location';
 import CardDetails from './components/Cards/CardDetails';
 
-
 function App(){
   return(
     
@@ -35,11 +34,12 @@ function App(){
 }
 
 const Home =()=> {
-  let [pageNumber, setPageNumber] = useState(1);
+  
+  let [pageNumber, updatePageNumber] = useState(1);
   let [search, setSearch] = useState("");
-  let [status, setStatus] = useState("");
-  let [gender, setGender] = useState("");
-  let [species, setSpecies] = useState("")
+  let [status, updateStatus] = useState("");
+  let [gender, updateGender] = useState("");
+  let [species, updateSpecies] = useState("")
   let [fetchedData, updateFetchedDate] = useState([]);
   let {info, results} = fetchedData;
   
@@ -60,11 +60,17 @@ const Home =()=> {
         <div className = "App" >
         <h1 className="text-center mb-4">Characters</h1>
     
-        <Search setPageNumber={setPageNumber} setSearch={setSearch}/>
+        <Search updatePageNumber={updatePageNumber} setSearch={setSearch}/>
        <div className="contanier">
          <div className="row">
            
-           <Filters setSpecies={setSpecies} setGender={setGender} setStatus={setStatus} setPageNumber={setPageNumber} />
+           <Filters  
+           pageNumber={pageNumber}
+            status={status}
+           updateStatus={updateStatus}
+            updateGender={updateGender}
+            updateSpecies={updateSpecies} 
+            updatePageNumber={updatePageNumber} />
          
               <div className="col-lg-8 col-12">
               <div className="row">
@@ -73,7 +79,7 @@ const Home =()=> {
               </div>
          </div>
         </div>
-       <Pagination info={info} pageNumber={pageNumber} setPageNumber={setPageNumber}/>
+       <Pagination info={info} pageNumber={pageNumber} updatePageNumber={updatePageNumber} />
        </div>
     );
 }

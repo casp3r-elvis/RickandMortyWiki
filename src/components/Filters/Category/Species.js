@@ -1,7 +1,7 @@
 import React from 'react'
 import Filterbtn from '../Filterbtn';
 
-const Species = ({setSpecies, setPageNumber}) => {
+const Species = ({updateSpecies, updatePageNumber}) => {
      let specie = [
     "Human",
     "Alien",
@@ -26,9 +26,9 @@ const Species = ({setSpecies, setPageNumber}) => {
       <div className="accordion-body d-flex flex-wrap gap-3">
           {specie.map((items, index)=>(
           <Filterbtn
-           tasks ={setSpecies} 
-          setPageNumber={setPageNumber} 
-           key={index} name="specie"
+           tasks ={updateSpecies} 
+          updatePageNumber={updatePageNumber} 
+           key={index} name="species"
             index={index} items={items}
             />
           ))}
